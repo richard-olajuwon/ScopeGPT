@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
+import Header from './components/Header';
+import LandingPage from './components/LandingPage';
+import './App.css'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [theme, setTheme] = useState('dark')
+
+    function themeToggler()
+    {
+        setTheme((curr) => (curr === 'dark' ? 'light':'dark'))
+    }
+    return (
+        <div className="App" id={theme}>
+            <Header handleTheme={themeToggler}/>
+            <LandingPage/>
+        </div>
+    );
 }
 
 export default App;

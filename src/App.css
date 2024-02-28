@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+
+#dark{
+    width: 100vw;
+    background-color: var(--background-color-dark);
+    color: var(--color-dark);
+    transition: all 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#light{
+    width: 100vw;
+    background-color: var(--background-color);
+    color: var(--color);
+    transition: all 0.5s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#light .theme{
+    background-image: var(--toggler-img);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#dark .theme{
+    background-image: var(--toggler-img-dark);
 }
 
-.App-link {
-  color: #61dafb;
+
+#dark .header-section{
+    background-color: rgb(28, 19, 19);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#light .header-section{
+    background-color: antiquewhite;
+}
+
+#light .answer{
+    background-color: antiquewhite;
+}
+
+#dark .answer{
+    background-color: rgb(28, 19, 19);
+}
+
+#light .textarea{
+    color: black;
+}
+
+#light .inputarea{
+    background-color: white;
+}
+
+#dark .inputarea{
+    background-color: black;
+}
+
+#light .info{
+    background-color: white;
+}
+
+#dark .info{
+    background-color: black;
 }
