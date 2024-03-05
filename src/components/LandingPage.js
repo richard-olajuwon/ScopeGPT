@@ -1,13 +1,14 @@
 import './LandingPage.css';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 
 function MainArea()
 {
+    const [qaPair, setQAPair] = useState([])
+    const [text, setText] = useState('')
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
-    const [text, setText] = useState('')
 
 
     async function apiCall()
@@ -26,7 +27,7 @@ function MainArea()
                 }]
             })
         }).then(response => response.json())
-          .then(data => { setAnswer(data.choices[0].message.content); console.log(data.choices[0].message.content)})
+          .then(data => { setAnswer(data.choices[0].message.content)})
           .catch(error => { console.error('Error:', error) })
     }
 
@@ -36,18 +37,48 @@ function MainArea()
         {
             e.preventDefault();
             setQuestion(text); 
-            setText('');
             apiCall();
+            addQAPairs(question, answer); 
+            setAnswer('');
+            setText('');
         }
     }
+
+    const bottomContainer = useRef(null)
+
+    function scrollBottom()
+    {
+        if (bottomContainer.current) {
+          bottomContainer.current.scrollIntoView({behavior: 'smooth'})
+        }
+    }
+
+    useEffect(() => {
+        scrollBottom();
+    }, [question, answer])
+
+    function addQAPairs(question, answer)
+    {
+        setQAPair([...qaPair, {question, answer}])
+    }
+
+    const qandA = qaPair.map((pair, index) => 
+        <div className='qa-container' key={index}>  
+            <div className="question">{pair.question}</div>
+            <div className="answer">{pair.answer}</div>
+        </div>
+    )
+
 
     return(
         
         <section className="main-area">
             <div className='main-area-div'>
                 <h3 style={{textAlign: 'center'}}>Enter your Question:</h3>
+                {qandA}
                 <div className="question">{question}</div>
                 <div className="answer">{answer}</div>
+                <div ref={bottomContainer}></div>
             </div>
 
             <div className="inputarea">
@@ -58,10 +89,9 @@ function MainArea()
                     onChange={(e) => setText(e.target.value)}
                     onKeyDown={handleEnterKeyPress}>
                     </textarea>
-                    <button onClick={() => {setQuestion(text); setText(''); apiCall()}} className="sendbtn"><img src='https://webst-images.s3.eu-north-1.amazonaws.com/icons8-send-30.png' alt='send button' className=''/></button>
+                    <button disabled={text === ''} onClick={() => {setQuestion(text); apiCall(); addQAPairs(question, answer); setAnswer(''); setText('')}} className="sendbtn"><img src='https://webst-images.s3.eu-north-1.amazonaws.com/icons8-send-30.png' alt='send button' className=''/></button>
                 </div>
             </div>
-
             <div className='info'>Developed by SCOPE</div>
         </section>
     )
