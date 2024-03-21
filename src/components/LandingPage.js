@@ -92,7 +92,7 @@ function MainArea()
                     <button disabled={text === ''} onClick={() => {setQuestion(text); apiCall(); addQAPairs(question, answer); setAnswer(''); setText('')}} className="sendbtn"><img src='https://webst-images.s3.eu-north-1.amazonaws.com/icons8-send-30.png' alt='send button' className=''/></button>
                 </div>
             </div>
-            <div className='info'>Developed by SCOPE</div>
+            <div className='info'>Developed by Richard</div>
         </section>
     )
 }
