@@ -1,9 +1,7 @@
 import './LandingPage.css';
 import { useState, useRef, useEffect } from 'react';
 
-
-
-function MainArea()
+function LandingPage()
 {
     const [qaPair, setQAPair] = useState([])
     const [text, setText] = useState('')
@@ -78,7 +76,7 @@ function MainArea()
                 {qandA}
                 <div className="question">{question}</div>
                 <div className="answer">{answer}</div>
-                <div ref={bottomContainer}></div>
+                <div ref={bottomContainer} style={{marginTop: '70px', width: '100%'}}></div>
             </div>
 
             <div className="inputarea">
@@ -94,16 +92,6 @@ function MainArea()
             </div>
             <div className='info'>Developed by Richard</div>
         </section>
-    )
-}
-
-
-function LandingPage()
-{
-    return(
-        <div className="main">
-            <MainArea/>
-        </div>
     )
 }
 

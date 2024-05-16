@@ -1,27 +1,15 @@
-.main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-}
-
-/*===================================================*/
 
 .main-area{
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 10px 0;
-    margin-top: 80px;
+    overflow-x: hidden;
 }
 .main-area-div{
     width: 90%;
-}
-
-.qa-container{
-    width: 100%;
+    margin-top: 70px;
 }
 
 .question{
@@ -34,7 +22,7 @@
 .answer{
     border-radius: 5px;
     margin-top: 10px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     line-height: 2;
 }
 
