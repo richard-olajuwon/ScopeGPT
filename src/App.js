@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
 import './App.css'
@@ -6,7 +6,11 @@ import './App.css'
 
 
 function App() {
-    const [theme, setTheme] = useState('dark')
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
     function themeToggler()
     {
