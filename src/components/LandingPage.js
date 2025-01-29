@@ -11,14 +11,14 @@ function LandingPage()
 
     async function apiCall()
     {
-        await fetch(process.env.REACT_APP_API_URL, {
+        await fetch(process.env.REACT_APP_CHATGPT_API_URL, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                'Authorization': `Bearer ${process.env.REACT_APP_CHATGPT_API_KEY}`
             },
             body:JSON.stringify({
-                model: 'gpt-3.5-turbo',
+                model: 'gpt-4o-mini',
                 messages:[{
                     role: 'user',
                     content: text
